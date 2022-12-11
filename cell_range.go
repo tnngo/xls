@@ -1,9 +1,5 @@
 package xls
 
-import (
-	"fmt"
-)
-
 // range type of multi rows
 type Ranger interface {
 	FirstRow() uint16
@@ -51,7 +47,7 @@ func (h *HyperLink) String(wb *WorkBook) []string {
 	res := make([]string, h.LastColB-h.FristColB+1)
 	var str string
 	if h.IsUrl {
-		str = fmt.Sprintf("%s(%s)", h.Description, h.Url)
+		str = h.Url
 	} else {
 		str = h.ExtendedFilePath
 	}
