@@ -1,5 +1,9 @@
 package xls
 
+import (
+	"fmt"
+)
+
 // range type of multi rows
 type Ranger interface {
 	FirstRow() uint16
@@ -45,7 +49,12 @@ type HyperLink struct {
 // get the hyperlink string, use the public variable Url to get the original Url
 func (h *HyperLink) String(wb *WorkBook) []string {
 	res := make([]string, h.LastColB-h.FristColB+1)
-	str := h.ExtendedFilePath
+	var str string
+	if h.IsUrl {
+		str = fmt.Sprintf("%s(%s)", h.Description, h.Url)
+	} else {
+		str = h.ExtendedFilePath
+	}
 
 	for i := uint16(0); i < h.LastColB-h.FristColB+1; i++ {
 		res[i] = str
