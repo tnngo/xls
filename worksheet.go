@@ -23,7 +23,7 @@ type boundsheet struct {
 	Name    byte
 }
 
-//WorkSheet in one WorkBook
+// WorkSheet in one WorkBook
 type WorkSheet struct {
 	bs         *boundsheet
 	wb         *WorkBook
@@ -35,6 +35,10 @@ type WorkSheet struct {
 	MaxRow      uint16
 	parsed      bool
 	rightToLeft bool
+}
+
+func (w *WorkSheet) Rows() map[uint16]*Row {
+	return w.rows
 }
 
 func (w *WorkSheet) Row(i int) *Row {
