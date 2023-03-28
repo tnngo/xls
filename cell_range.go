@@ -47,7 +47,7 @@ func (h *HyperLink) String(wb *WorkBook) []string {
 	res := make([]string, h.LastColB-h.FristColB+1)
 	var str string
 	if h.IsUrl {
-		str = h.Url
+		str = h.Description
 	} else {
 		str = h.ExtendedFilePath
 	}
